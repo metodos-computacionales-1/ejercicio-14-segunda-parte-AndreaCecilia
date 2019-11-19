@@ -39,17 +39,20 @@ void Runge(double & x0, double & v0, double h=0.01)
 
 int main(void)
 {
-
+  int N;
+  std::cout<<"Introduce 0 si Euler y 1 si Runge: ";
+  std::cin>>N;
+ //Si N es 0 se realiza Euler, si es 1 se da Runge
   double x0=1;
   double v0=0;
   double h=0.01;
   double n=0;
   for(int i=0; i<1000; i++){
-  //Euler(x0, v0, h);
-  Runge(x0, v0, h);
+
   std::cout<<n<<" "<<x0<<" "<<v0<<std::endl;
+  if(N==0){Euler(x0, v0, h);}
+  else{  Runge(x0, v0, h);}
   n=h+n;
   }
   return 0;
 }
-
