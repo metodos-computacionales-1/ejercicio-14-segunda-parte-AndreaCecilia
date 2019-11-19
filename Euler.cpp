@@ -20,6 +20,21 @@ void Euler(double & x0, double & v0, double h=0.01)
   v0=v0+h*aceleracion( x0, v0);
 }
 
+void Runge(double & x0, double & v0, double h=0.01)
+{
+  double k10, k11, k20, k21, k30, k31, k40, k41;
+  k10 = h*velocidad(x0, v0);
+  k11 = h*aceleracion( x0,  v0);
+  k20 = h*velocidad(x0 + k10/2, v0 + k11/2);
+  k21 = h*aceleracion(x0 + k10/2, v0 + k11/2);
+  k30 = h*velocidad(x0 + k20/2, v0 + k21/2);
+  k31 = h*aceleracion(x0 + k20/2, v0 + k21/2);
+  k40 = h*velocidad(x0 + k30, v0 + k31);
+  k41 = h*aceleracion(x0 + k30, v0 + k31);
+
+  x0 = x0 + (1.0/6.0)*(k10 + 2*k20 + 2*k30 + k40);
+  v0 = v0 + (1.0/6.0)*(k11 + 2*k21 + 2*k31 + k41);
+}
 
 int main(void)
 {
@@ -29,7 +44,8 @@ int main(void)
   double h=0.01;
   double n=0;
   for(int i=0; i<1000; i++){
-  Euler(x0, v0, h);
+  //Euler(x0, v0, h);
+  Runge(x0, v0, h);
   std::cout<<n<<" "<<x0<<" "<<v0<<std::endl;
   n=h+n;
   }
