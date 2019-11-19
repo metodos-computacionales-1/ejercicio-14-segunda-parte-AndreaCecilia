@@ -5,13 +5,14 @@
 const double k=50.0;
 const double lambda = 1;
 const double m = 2;
-
+const double gama = 0.3;
 
 double velocidad(double x0, double v0){
   return v0;
 }
-double aceleracion(double x0, double v0){
-  return -k*pow(x0,lambda)/m;
+double aceleracion(double x0, double v0, int i=0){
+  if(i==0){  return -k*pow(x0,lambda)/m;}
+  else{  return -(k*pow(x0,lambda)+gama*v0)/m;}
 }
 
 void Euler(double & x0, double & v0, double h=0.01)
@@ -51,5 +52,4 @@ int main(void)
   }
   return 0;
 }
-
 
