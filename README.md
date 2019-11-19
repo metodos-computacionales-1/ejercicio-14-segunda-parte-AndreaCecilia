@@ -10,4 +10,4 @@ Al realizar el diagrama de Fase (x vs v) se encuentra una elipse, lo que es logi
 
 Cuando se agrega el termino de amortiguamiento, se ve que a medida que parsa el tiempo la amplitud de l oscilación disminuye, y el diagrama de fase se convierte en una espiral, es decir, ya no es un camino cerrao, lo que implica que existe una perdida de la energía. 
 
-Al probarlo con otros valores de lambda, el programa no me funciona.
+Al probarlo con otros valores de lambda, el programa no me funciona. Cuando Lambda es mayor a 1 los resultados tienden a -inf, y en menores que 1 tiende a nan
